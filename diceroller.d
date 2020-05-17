@@ -7,21 +7,10 @@ void dieroll() {
 	bool cont = true;
 	while (cont) {
 		auto rnd = Random(unpredictableSeed);
-		write("Roll what type of die? ");
-		uint die;
-		string die_s = strip(readln());
-		while (!isNumeric(die_s)) {
-			write("That's not an integer, try again: ");
-			die_s = strip(readln());
-		}
-		die = parse!uint(die_s);
+		write("How many sides? (positive integer) ");
+		uint die = getUint();
 		write("Roll how many dice? ");
-		string num_s = strip(readln());
-		while (!isNumeric(num_s)) {
-			write("That's not an integer, try again: ");
-			num_s = strip(readln());
-		}
-		uint num = parse!uint(num_s);
+		uint num = getUint();
 		uint[] result;
 		for ( ; num > 0; num--) {
 			result ~= uniform(1, die + 1, rnd);
@@ -31,4 +20,22 @@ void dieroll() {
 		string cont_c = strip(readln());
 		cont = (cont_c == "Y" || cont_c == "y");
 	}
+}
+
+uint getUint() {
+	int buffer = getInt();
+	while (buffer <= 0) {
+		write("That's negative, try again: ");
+		buffer = getInt();
+	}
+	return uint(buffer);
+}
+
+int getInt() {
+	string s_buffer = strip(readln());
+	while (!isNumeric(s_buffer)) {
+		write("That's not an integer, try again: ");
+		s_buffer = strip(readln());
+	}
+	return parse!int(s_buffer);
 }
