@@ -4,6 +4,7 @@ import std.stdio;
 import std.string;
 import std.conv;
 import diceroller;
+import monster;
 
 void main() {
 	bool cont = true;
@@ -21,7 +22,9 @@ void main() {
 		switch (choice) {
 			case 1: dieroll();
 				break;
-			case 2: cont = false;
+			case 2: mon_menu();
+				break;
+			case 3: cont = false;
 				break;
 			default: writeln("error- not a choice. try again");
 				 break;
@@ -30,5 +33,5 @@ void main() {
 }
 
 void displaymenu() {
-	write("pick an option:\n1. roll some dice\n2. quit\n> ");
+	write("pick an option:\n1. roll some dice\n2. monster manual\n3. quit\n> ");
 }
