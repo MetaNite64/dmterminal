@@ -1,3 +1,5 @@
+// diceroller.d: simple dice roller, supporting any number of sides and any number of dice
+
 import std.stdio;
 import std.string;
 import std.conv;
@@ -9,7 +11,7 @@ void dieroll() {
 		auto rnd = Random(unpredictableSeed);
 		write("How many sides? (positive integer) ");
 		uint die = getUint();
-		write("Roll how many dice? ");
+		write("Roll how many dice? (positive integer) ");
 		uint num = getUint();
 		uint[] result;
 		for ( ; num > 0; num--) {
